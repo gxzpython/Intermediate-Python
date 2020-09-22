@@ -195,4 +195,55 @@ print(cars)
 print(cars.loc[['AUS','EG']])
 
 
+loc and iloc (2)
+
+loc and iloc also allow you to select both rows and columns from a DataFrame. To experiment, try out the following commands in the IPython Shell. Again, paired commands produce the same result.
+
+cars.loc['IN', 'cars_per_cap']
+cars.iloc[3, 0]
+
+cars.loc[['IN', 'RU'], 'cars_per_cap']
+cars.iloc[[3, 4], 0]
+
+cars.loc[['IN', 'RU'], ['cars_per_cap', 'country']]
+cars.iloc[[3, 4], [0, 1]]
+
+
+
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+print(cars)
+# Print out drives_right value of Morocco
+print(cars.iloc[[5],[2]])
+
+# Print sub-DataFrame
+print(cars.iloc[[4,5],[1,2]])
+
+loc and iloc (3)
+
+It's also possible to select only columns with loc and iloc. In both cases, you simply put a slice going from beginning to end in front of the comma:
+
+cars.loc[:, 'country']
+cars.iloc[:, 1]
+
+cars.loc[:, ['country','drives_right']]
+cars.iloc[:, [1, 2]]
+
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out drives_right column as Series
+print(cars.loc[:,'drives_right'])
+
+# Print out drives_right column as DataFrame
+print(cars.loc[:,['drives_right']])
+
+# Print out cars_per_cap and drives_right as DataFrame
+print(cars.loc[:,['cars_per_cap','drives_right']])
+
+
+
+
 
